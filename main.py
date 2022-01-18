@@ -31,10 +31,12 @@ if __name__ == '__main__':
             state, reward, is_end_episode = grid_env.step(action)
             agent.observe(state, reward)   # 状態と報酬の観測
             episode_reward.append(reward)
+            print(grid_env)
         rewards.append(np.sum(episode_reward))  # このエピソードの平均報酬を与える
         state = grid_env.reset()  # 初期化
         agent.observe(state)    # エージェントを初期位置に
         is_end_episode = False
+        print()
 
     # 結果のプロット
     plt.plot(np.arange(NB_EPISODE), rewards)

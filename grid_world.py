@@ -107,3 +107,35 @@ class GridWorld:
     def reset(self):
         self.agent_pos = self.start_pos
         return self.start_pos
+
+    def __str__(self):
+        s = ''
+        agent_pos_x, agent_pos_y = copy.deepcopy(self.agent_pos)
+
+        s += '#' * (len(self.map[0]) + 2)
+        s += '\n'
+
+        for y in range(len(self.map)):
+            s += '#'
+            for x in range(len(self.map[y])):
+                if agent_pos_x == x and agent_pos_y == y:
+                    s += '@'
+                    continue
+
+                cell = self.map[y][x]
+                if cell == 0:
+                    s += '.'
+                elif cell == 1:
+                    s += 'G'
+                elif cell == 2:
+                    s += '#'
+                elif cell == 3:
+                    s += 'T'
+                else:
+                    raise ''
+            s += '#'
+            s += '\n'
+
+        s += '#' * (len(self.map[0]) + 2)
+        s += '\n'
+        return s

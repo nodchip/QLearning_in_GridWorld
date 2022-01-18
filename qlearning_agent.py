@@ -47,6 +47,8 @@ class QLearningAgent:
             action = np.random.randint(0, len(self.q_values[self.state]))
         else:   # greedy 行動
             action = np.argmax(self.q_values[self.state])
+        
+        print(self.state, self.q_values[self.state], action)
 
         self.previous_action = action
         return action
